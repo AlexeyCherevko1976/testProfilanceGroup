@@ -5,11 +5,17 @@ import Main from './Main'
 import News from './News'
 import Intake from './Intake'
 
+import reducer from "./reducers";
+import {createStore} from 'redux';
+const initialState={tech:"React", status:"user"};
+const store=createStore(reducer, initialState);
+
 class App extends React.Component {
 
-constructor(props){
-  super(props);
-  let {status}=this.props;
+constructor(){
+  //super(store.getState());
+  super();
+  let {status}=store.getState();
   this.state={status: status, page:""};
   this.clickMain=clickMain.bind(this);
   this.clickNews=clickNews.bind(this);
