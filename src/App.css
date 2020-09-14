@@ -1,5 +1,13 @@
 .App {
-  text-align: center;
+  background: Aqua;
+
+}
+.App-content{
+  height: 800px;
+}
+
+.App-barBtn{
+  width: 40px;
 }
 
 .App-logo {
