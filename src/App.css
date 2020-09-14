@@ -2,12 +2,18 @@
   background: Aqua;
 
 }
+.App-nav{
+  margin-bottom: 80px;
+}
 .App-content{
   height: 800px;
 }
 
 .App-barBtn{
   width: 40px;
+}
+.App-content{
+  margin: 100px;
 }
 
 .App-logo {
