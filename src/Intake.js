@@ -6,19 +6,30 @@ import store from "./reducers";
 
 class Intake extends React.Component {
 
-constructor(props){
-  super(props);
+constructor(){
+  super();
   //let {status}=this.props;
-  //this.state={status: status, page:""};
-  //this.clickMain=clickMain.bind(this);
-  function clickMain(e){
-    e.preventDefault();
-/*    this.setState(state=>({
-      page:"main"
-    }))*/
-    console.log('intake');
+  this.state={status: store.getState().status,
+      password:"", login:""};
+  this.clickButton=clickButton.bind(this);
+  this.changeLogin=changeLogin.bind(this);
+  this.changePassword=changePassword.bind(this);
+   function clickButton(event){
+  
+    store.dispatch({type:"register",
+     login:this.state.login,
+     password:this.state.password})
+    console.log('clickRegister');
+    event.preventDefault();
   }
-
+  function changeLogin(event){
+    this.setState({login:event.target.value});
+    console.log("changeLogin")
+  }
+  function changePassword(event){
+    this.setState({password:event.target.value});
+    console.log("changePassword")
+  }
 }
 componentDidMount(){
 
@@ -30,21 +41,25 @@ render(){
 <div className="">
 <form >
   <div className="form-group">
-    <label>Логин</label>
-    <input type="text" id="login" className="form-control" placeholder="Ввести логин"></input> 
+    <label>Логин {this.state.status}</label>
+    <input type="text" value={this.state.login} onChange={this.changeLogin} id="login" className="form-control" placeholder="Ввести логин"></input> 
     <small id="loginHelp" className="form-text-muted">
       Введите логин
     </small>
   </div>
   <div className="form-group">
     <label>Пароль</label>
-    <input type="password" id="password" className="form-control" placeholder="Ввести пароль"></input> 
+    <input type="password" value={this.state.password} onChange={this.changePassword} id="password" className="form-control" placeholder="Ввести пароль"></input> 
     <small id="loginHelp" className="form-text-muted">
       Введите логин
     </small>
   </div>
+  <div>
+  <button type="button" onClick={this.clickButton} className="btn btn-success">Success</button>
+  </div>
 </form>
-
+{this.state.password}
+{this.state.login}
 </div>
  
   ); 

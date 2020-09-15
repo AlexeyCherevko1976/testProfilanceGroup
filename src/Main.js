@@ -6,8 +6,8 @@ import store from "./reducers";
 
 class Main extends React.Component {
 
-constructor(props){
-  super(props);
+constructor(){
+  super();
   //let {status}=this.props;
   //this.state={status: status, page:""};
   //this.clickMain=clickMain.bind(this);
