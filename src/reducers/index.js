@@ -15,11 +15,13 @@ const reducer=(state, action)=>{
       	state.page="intake";
       }else{
       	state.status=dataUser.status;
+      	state.login=dataUser.login;
+      	 //dataUser.status;
       	state.page="main";
       }
  
       //state.password=action.password;
-      //console.log(dataUser, "case register");
+      console.log(dataUser, "case register");
       return state;
 
     default:

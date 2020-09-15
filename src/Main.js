@@ -22,7 +22,7 @@ render(){
   return (
 
 <div className="">
-  Привет, {store.getState().status==="guest" ? "Гость!" : store.getState().login}
+  <h1>Привет, {store.getState().status==="guest" ? "Гость!" : store.getState().login} </h1>
 </div>
  
   ); 

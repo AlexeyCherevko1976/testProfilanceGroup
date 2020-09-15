@@ -41,7 +41,7 @@ render(){
 <div className="">
 <form >
   <div className="form-group">
-    <label>Логин {this.state.status}</label>
+    <label>Логин </label>
     <input type="text" value={this.state.login} onChange={this.changeLogin} id="login" className="form-control" placeholder="Ввести логин"></input> 
     <small id="loginHelp" className="form-text-muted">
       Введите логин
@@ -58,8 +58,7 @@ render(){
   <button type="button" onClick={this.clickButton} className="btn btn-success">Success</button>
   </div>
 </form>
-{this.state.password}
-{this.state.login}
+
 </div>
  
   ); 
