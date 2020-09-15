@@ -11,13 +11,7 @@ constructor(props){
   //let {status}=this.props;
   //this.state={status: status, page:""};
   //this.clickMain=clickMain.bind(this);
-  function clickMain(e){
-    e.preventDefault();
-/*    this.setState(state=>({
-      page:"main"
-    }))*/
-    console.log('main');
-  }
+
 
 }
 componentDidMount(){
@@ -28,7 +22,7 @@ render(){
   return (
 
 <div className="">
-  Main! {store.getState().value}
+  Привет, {store.getState().status==="guest" ? "Гость!" : store.getState().login}
 </div>
  
   ); 

@@ -1,5 +1,6 @@
 import {createStore} from 'redux';
-const initialState={tech:"React", status:"user", value:15};
+const initialState={tech:"React", status:"guest", value:15,
+login:"", password:""};
 const reducer=(state, action)=>{
   switch (action.type){
     case 'inc':

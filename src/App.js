@@ -24,21 +24,21 @@ constructor(){
       value: store.getState().value
     }))
     
-    console.log('handleClick');
+    //console.log('handleClick');
   }
   function clickNews(e){ 
     e.preventDefault();
     this.setState(state=>({
       page:"news"
     }))
-    console.log('handleClick');
+    //console.log('handleClick');
   }
   function clickIntake(e){
     e.preventDefault();
     this.setState(state=>({
       page:"intake"
     }))
-    console.log('handleClick');
+    //console.log('handleClick');
   }
 }
 componentDidMount(){
@@ -69,8 +69,7 @@ render(){
          this.state.page==="news" ? <News /> :
          this.state.page==="intake" ? <Intake /> : ""}
 
-        {this.state.status} -\- 
-        {this.state.value}
+
         
       </div>  
     </div>  
