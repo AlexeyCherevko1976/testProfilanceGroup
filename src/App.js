@@ -4,26 +4,7 @@ import './bootstrap.css';
 import Main from './Main'
 import News from './News'
 import Intake from './Intake'
-
-//import reducer from "./reducers";
-import {createStore} from 'redux';
-const initialState={tech:"React", status:"user", value:15};
-const reducer=(state, action)=>{
-  switch (action.type){
-    case 'inc':
-      state.value+=1;
-      return state; 
-    case 'dec':
-      return state;
-    default:
-     return state
-  }
-}
-const update=()=>{
-  console.log(store.getState().value);
-}
-const store=createStore(reducer, initialState);
-store.subscribe(update);
+import store from "./reducers";
 
 
 class App extends React.Component {
@@ -31,16 +12,18 @@ constructor(){
   //super(store.getState());
   super(); 
   let {status}=store.getState();
-  this.state={status: status, page:""};
+  this.state={status: status, page:"", value:"value"};
   this.clickMain=clickMain.bind(this);
   this.clickNews=clickNews.bind(this);
   this.clickIntake=clickIntake.bind(this);
   function clickMain(e){
     e.preventDefault();
-    this.setState(state=>({
-      page:"main"
-    }))
     store.dispatch({type:'inc'});
+    this.setState(state=>({
+      page:"main",
+      value: store.getState().value
+    }))
+    
     console.log('handleClick');
   }
   function clickNews(e){ 
@@ -86,7 +69,8 @@ render(){
          this.state.page==="news" ? <News /> :
          this.state.page==="intake" ? <Intake /> : ""}
 
-        {this.state.status}
+        {this.state.status} -\- 
+        {this.state.value}
         
       </div>  
     </div>  

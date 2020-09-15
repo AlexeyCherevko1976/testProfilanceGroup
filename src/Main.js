@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 //import './Main.css';
 import './bootstrap.css';
+import store from "./reducers";
 
 
 class Main extends React.Component {
@@ -27,7 +28,7 @@ render(){
   return (
 
 <div className="">
-  Main!
+  Main! {store.getState().value}
 </div>
  
   ); 
