@@ -16,6 +16,7 @@ const reducer=(state, action)=>{
       }else{
       	state.status=dataUser.status;
       	state.id=dataUser.id;
+      	state.login=dataUser.login;
       	state.page="main";
       }
  

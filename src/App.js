@@ -12,7 +12,7 @@ constructor(){
   //super(store.getState());
   super();   
   let {status}=store.getState();
-  this.state={status: status, page:"main", value:"value",
+  this.state={status: "guest", page:"main", value:"value",
       login:"example", password:"password", button:false};
   this.clickMain=clickMain.bind(this);
   this.clickNews=clickNews.bind(this);
@@ -30,13 +30,16 @@ constructor(){
   }
   function onRegister(button){
     this.setState({button});
-/*    store.dispatch({type:"register",
+    store.dispatch({type:"register",
      login:this.state.login,
      password:this.state.password});
     this.setState(state=>({
-      page:"news"
-    }));*/
-    //console.log(this.state.page);
+      page:store.getState().page,
+      status:store.getState().status,
+      id:store.getState().id,
+      login:store.getState().login
+    }));
+    console.log(this.state.page);
   }
 
 
@@ -79,6 +82,7 @@ render(){
   const login=this.state.login;
   const password=this.state.password;
   const button=this.state.button;
+  const status=this.state.status;
   return (
 
 
@@ -97,7 +101,7 @@ render(){
   <div className="row">
     <div className="col-12">
       <div className="App-content"> 
-        {this.state.page==="main" ? <Main /> :
+        {this.state.page==="main" ? <Main login={login} status={status}/> :
          this.state.page==="news" ? <News /> :
          this.state.page==="intake" ? <Intake login={login} password={password} propsChangeLogin={this.onChangeLoginIn}  propsChangePassword={this.onChangePasswordIn} onButton={this.onRegister}/> : ""}
        login={login}; password={password};
