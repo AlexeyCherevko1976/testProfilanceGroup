@@ -12,10 +12,34 @@ constructor(){
   //super(store.getState());
   super();   
   let {status}=store.getState();
-  this.state={status: status, page:"main", value:"value"};
+  this.state={status: status, page:"main", value:"value",
+      login:"example", password:"password", button:false};
   this.clickMain=clickMain.bind(this);
   this.clickNews=clickNews.bind(this);
   this.clickIntake=clickIntake.bind(this);
+
+  this.onChangeLoginIn=onChangeLoginIn.bind(this);
+  this.onChangePasswordIn=onChangePasswordIn.bind(this);
+  this.onRegister=onRegister.bind(this);
+
+  function onChangeLoginIn(login){
+    this.setState({login});
+  }
+  function onChangePasswordIn(password){
+    this.setState({password});
+  }
+  function onRegister(button){
+    this.setState({button});
+/*    store.dispatch({type:"register",
+     login:this.state.login,
+     password:this.state.password});
+    this.setState(state=>({
+      page:"news"
+    }));*/
+    //console.log(this.state.page);
+  }
+
+
   function clickMain(e){
     e.preventDefault();
     store.dispatch({type:'inc'});
@@ -52,6 +76,9 @@ componentDidUpdate(){
 }
 
 render(){
+  const login=this.state.login;
+  const password=this.state.password;
+  const button=this.state.button;
   return (
 
 
@@ -72,8 +99,10 @@ render(){
       <div className="App-content"> 
         {this.state.page==="main" ? <Main /> :
          this.state.page==="news" ? <News /> :
-         this.state.page==="intake" ? <Intake /> : ""}
-        
+         this.state.page==="intake" ? <Intake login={login} password={password} propsChangeLogin={this.onChangeLoginIn}  propsChangePassword={this.onChangePasswordIn} onButton={this.onRegister}/> : ""}
+       login={login}; password={password};
+       button={button};
+
       </div>  
     </div>  
   </div>

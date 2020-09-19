@@ -1,34 +1,28 @@
 import React,{Component} from 'react';
 //import './Main.css';
 import './bootstrap.css';
-import store from "./reducers";
+//import store from "./reducers";
 
 
 class Intake extends React.Component {
 
-constructor(){
-  super();
-  //let {status}=this.props;
-  this.state={status: store.getState().status,
-      password:"", login:""};
+constructor(props){
+  super(props);
+
   this.clickButton=clickButton.bind(this);
-  this.changeLogin=changeLogin.bind(this);
-  this.changePassword=changePassword.bind(this);
-   function clickButton(event){
-  
-    store.dispatch({type:"register",
-     login:this.state.login,
-     password:this.state.password})
-    console.log('clickRegister');
+  this.onChangeLogin=onChangeLogin.bind(this);
+  this.onChangePassword=onChangePassword.bind(this);
+  function clickButton(event){
+    this.props.onButton("true");    
     event.preventDefault();
   }
-  function changeLogin(event){
-    this.setState({login:event.target.value});
-    console.log("changeLogin")
+  function onChangeLogin(event){
+    this.props.propsChangeLogin(event.target.value);
+    event.preventDefault();
   }
-  function changePassword(event){
-    this.setState({password:event.target.value});
-    console.log("changePassword")
+  function onChangePassword(event){
+    this.props.propsChangePassword(event.target.value);
+    event.preventDefault();
   }
 }
 componentDidMount(){
@@ -36,20 +30,22 @@ componentDidMount(){
 }
 
 render(){
+  const login=this.props.login;
+  const password=this.props.password;
   return (
 
 <div className="">
 <form >
   <div className="form-group">
     <label>Логин </label>
-    <input type="text" value={this.state.login} onChange={this.changeLogin} id="login" className="form-control" placeholder="Ввести логин"></input> 
+    <input type="text" value={login} onChange={this.onChangeLogin} id="login" className="form-control" placeholder="Ввести логин"></input> 
     <small id="loginHelp" className="form-text-muted">
       Введите логин
     </small>
   </div>
   <div className="form-group">
     <label>Пароль</label>
-    <input type="password" value={this.state.password} onChange={this.changePassword} id="password" className="form-control" placeholder="Ввести пароль"></input> 
+    <input type="password" value={password} onChange={this.onChangePassword} id="password" className="form-control" placeholder="Ввести пароль"></input> 
     <small id="loginHelp" className="form-text-muted">
       Введите логин
     </small>
@@ -58,7 +54,6 @@ render(){
   <button type="button" onClick={this.clickButton} className="btn btn-success">Success</button>
   </div>
 </form>
-
 </div>
  
   ); 

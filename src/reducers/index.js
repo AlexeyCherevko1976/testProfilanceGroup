@@ -2,7 +2,7 @@ import {createStore} from 'redux';
 import bazaLogin from './bazaLogin'
 
 const initialState={tech:"React", status:"guest", value:15,
-login:"", password:"", page:"main"};
+login:"", password:"", page:"main", id:false};
 const reducer=(state, action)=>{
   switch (action.type){
     case 'inc':
@@ -15,8 +15,7 @@ const reducer=(state, action)=>{
       	state.page="intake";
       }else{
       	state.status=dataUser.status;
-      	state.login=dataUser.login;
-      	 //dataUser.status;
+      	state.id=dataUser.id;
       	state.page="main";
       }
  
