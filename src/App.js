@@ -89,26 +89,23 @@ render(){
 <div className="container-fluid App">
   <div className="row App-nav">
     <div className="col-12">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-
-        <button type="button" id="Main" className="btn btn-outline-primary btn-block"  onClick={this.clickMain}>Главная</button>
-        <button type="button" className="btn btn-outline-secondary btn-block" onClick={this.clickNews}>Новости</button>
-        <button type="button" className="btn btn-outline-success btn-block" onClick={this.clickIntake}>Вход</button>
- 
-      </nav>
-    </div>
-  </div> 
-  <div className="row">
-    <div className="col-12">
-      <div className="App-content"> 
-        {this.state.page==="main" ? <Main login={login} status={status}/> :
-         this.state.page==="news" ? <News /> :
-         this.state.page==="intake" ? <Intake login={login} password={password} propsChangeLogin={this.onChangeLoginIn}  propsChangePassword={this.onChangePasswordIn} onButton={this.onRegister}/> : ""}
-       login={login}; password={password};
-       button={button};
-
-      </div>  
-    </div>  
+      <ul className="nav nav-tabs">
+        <li className="nav-item">
+          <a className="nav-link active" data-toggle="tab" href="#description">Main</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" data-toggle="tab" href="#charakter">News</a>
+        </li>
+      </ul>
+      <div className="tab-content">
+        <div className="tab-pane fade show active" id="description">
+          <Main login={login} status={status}/>
+        </div>
+        <div className="tab-pane fade show" id="charakter">
+          <News />
+        </div>
+      </div>
+</div>
   </div>
 </div>
  
