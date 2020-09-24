@@ -2,9 +2,14 @@ import {createStore} from 'redux';
 import bazaLogin from './bazaLogin'
 
 const initialState={tech:"React", status:"guest", value:15,
-login:"", password:"", page:"main", id:false};
+login:"", password:"", page:"main", id:false,
+stepSize:3
+};
 const reducer=(state, action)=>{
   switch (action.type){
+    case 'onChangeStep':
+      console.log("action.value=", action.value)
+      state.value=+action.value;
     case 'inc':
       state.value+=1;
       return state; 
@@ -21,7 +26,7 @@ const reducer=(state, action)=>{
       }
  
       //state.password=action.password;
-      console.log(dataUser, "case register");
+      //console.log(dataUser, "case register");
       return state;
 
     default:

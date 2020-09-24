@@ -4,6 +4,7 @@ import './bootstrap.css';
 import Main from './Main'
 import News from './News'
 import Intake from './Intake'
+import Step from './Step'
 import store from "./reducers";
 
 
@@ -106,6 +107,8 @@ render(){
          this.state.page==="intake" ? <Intake login={login} password={password} propsChangeLogin={this.onChangeLoginIn}  propsChangePassword={this.onChangePasswordIn} onButton={this.onRegister}/> : ""}
        login={login}; password={password};
        button={button};
+       <Step />
+
 
       </div>  
     </div>  
